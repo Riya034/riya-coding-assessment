@@ -100,7 +100,7 @@ class Handler(SimpleHTTPRequestHandler):
    self.send_response(200);self.send_header('Content-Type','application/json');self.send_header('Content-Length',str(len(output)));self.end_headers();self.wfile.write(output)
   except Exception as ex:
    result=json.dumps({'error':str(ex)}).encode();self.send_response(400);self.send_header('Content-Type','application/json');self.end_headers();self.wfile.write(result)
-if __name__=='__main__':
- port=int(os.environ.get('PORT','8000'))
- print(f'Practice assessment running at http://localhost:{port}');print('For trusted local use only. Do not expose this code runner to the public internet.')
- ThreadingHTTPServer(('127.0.0.1',port),Handler).serve_forever()
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', '10000'))
+    print(f'Assessment server listening on port {port}')
+    ThreadingHTTPServer(('0.0.0.0', port), Handler).serve_forever()
